@@ -42,13 +42,14 @@ K=GenerateK(X,Kfun);
 
 figure('Position',[100,100,800,600])
 PP=P;
-image(10*3*N*PP)
+P50=P^50;
+image(30*N*PP)
 title('Progression of transition matrices')
 xlabel('Press any key')
 pause
-for i=1:50:3000
-    image(10*3*N*PP)
-    PP=PP*P;
+for i=1:50:2400
+    image(30*N*PP)
+    PP=PP*P50;
     pause(.001)
 end
 close(gcf)
@@ -93,7 +94,7 @@ drawnow
 
 colors={'blue','red','green','magenta','black','cyan','yellow'};
 K=num_spirals;
-[G,SSE]=kmeans(Psi(:,1:2),K,200);
+[G,SSE]=k_means(Psi(:,1:2),K,200);
 
 figure('Position',[100,100,900,400])
 subplot(1,2,1)
